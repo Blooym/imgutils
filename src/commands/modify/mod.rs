@@ -3,10 +3,10 @@ mod brighten;
 mod contrast;
 mod crop;
 mod flip;
+mod format;
 mod grayscale;
 mod hue;
 mod invert;
-mod reformat;
 mod resize;
 mod rotate;
 
@@ -15,10 +15,10 @@ use self::brighten::BrightenCommand;
 use self::contrast::ContrastCommand;
 use self::crop::CropCommand;
 use self::flip::FlipCommand;
+use self::format::FormatCommand;
 use self::grayscale::GrayscaleCommand;
 use self::hue::HueCommand;
 use self::invert::InvertCommand;
-use self::reformat::ReformatCommand;
 use self::resize::ResizeCommand;
 use self::rotate::RotateCommand;
 
@@ -46,7 +46,7 @@ pub enum ModifySubcommand {
     Grayscale(GrayscaleCommand),
     Invert(InvertCommand),
     Hue(HueCommand),
-    Reformat(ReformatCommand),
+    Format(FormatCommand),
     Resize(ResizeCommand),
     Rotate(RotateCommand),
 }
@@ -71,7 +71,7 @@ impl ExecutableCommand for ModifyCommandBase {
             ModifySubcommand::Grayscale(cmd) => cmd.run(),
             ModifySubcommand::Invert(cmd) => cmd.run(),
             ModifySubcommand::Hue(cmd) => cmd.run(),
-            ModifySubcommand::Reformat(cmd) => cmd.run(),
+            ModifySubcommand::Format(cmd) => cmd.run(),
             ModifySubcommand::Resize(cmd) => cmd.run(),
             ModifySubcommand::Rotate(cmd) => cmd.run(),
         } {
