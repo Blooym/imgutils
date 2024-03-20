@@ -23,7 +23,7 @@ pub struct ContrastCommand {
 
     /// The amount to adjust the contrast by.
     /// Negative values decrease the contrast and positive values increase the contrast.
-    #[arg(long = "amount")]
+    #[arg(long = "amount", allow_hyphen_values = true)]
     pub amount: f32,
 
     /// Overwrite any existing file at the output path.

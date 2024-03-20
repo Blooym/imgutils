@@ -22,7 +22,7 @@ pub struct BlurCommand {
     pub output_path: PathBuf,
 
     /// How strongly the image should be blurred (aka. sigma value).
-    #[arg(long = "strength")]
+    #[arg(long = "strength", allow_hyphen_values = true)]
     pub sigma_strength: f32,
 
     /// Overwrite any existing file at the output path.

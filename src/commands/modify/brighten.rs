@@ -23,7 +23,7 @@ pub struct BrightenCommand {
 
     /// The amount to brighten each pixel by.
     /// Negative values decrease the brightness and positive values increase it.
-    #[arg(long = "amount")]
+    #[arg(long = "amount", allow_hyphen_values = true)]
     pub amount: i32,
 
     /// Overwrite any existing file at the output path.
