@@ -4,6 +4,7 @@ name = "imgutils"
 description = "Cross-platform CLI for quickly parsing & manipulating images."
 authors = ["Blooym"]
 categories = ["command-line-utilities", "multimedia::images"]
+license = "MIT OR Apache-2.0"
 keywords = ["image", "cli"]
 repository = "https://github.com/Blooym/imgutils"
 rust-version = "1.74"
