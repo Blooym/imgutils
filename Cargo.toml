@@ -1,0 +1,48 @@
+[package]
+version = "0.1.0"
+name = "imgutils"
+description = "Cross-platform CLI for quickly parsing & manipulating images."
+authors = ["Blooym"]
+categories = ["command-line-utilities", "multimedia::images"]
+keywords = ["image", "cli"]
+repository = "https://github.com/Blooym/imgutils"
+rust-version = "1.74"
+edition = "2021"
+
+[[bin]]
+name = "imgutils"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+# The profile that 'cargo dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+[dependencies]
+anyhow = { version = "1.0.81", features = ["backtrace"] }
+clap = { version = "4.5.3", features = ["derive"] }
+image = "0.25.0"
+indicatif = "0.17.8"
+owo-colors = { version = "4.0.0", features = ["supports-colors"] }
+
+# Config for 'cargo dist'
+[workspace.metadata.dist]
+# The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.11.1"
+# CI backends to support
+ci = ["github"]
+# The installers to generate for each app
+installers = []
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = [
+    "aarch64-apple-darwin",
+    "x86_64-apple-darwin",
+    "x86_64-unknown-linux-gnu",
+    "x86_64-unknown-linux-musl",
+    "x86_64-pc-windows-msvc",
+]
+# Publish jobs to run in CI
+pr-run-mode = "skip"
