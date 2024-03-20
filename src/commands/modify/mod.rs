@@ -40,7 +40,7 @@ pub struct ModifyCommandBase {
 pub enum ModifySubcommand {
     Blur(BlurCommand),
     Brighten(BrightenCommand),
-    Constrast(ContrastCommand),
+    Contrast(ContrastCommand),
     Crop(CropCommand),
     Flip(FlipCommand),
     Grayscale(GrayscaleCommand),
@@ -65,7 +65,7 @@ impl ExecutableCommand for ModifyCommandBase {
         if let Err(err) = match self.subcommand {
             ModifySubcommand::Blur(cmd) => cmd.run(),
             ModifySubcommand::Brighten(cmd) => cmd.run(),
-            ModifySubcommand::Constrast(cmd) => cmd.run(),
+            ModifySubcommand::Contrast(cmd) => cmd.run(),
             ModifySubcommand::Crop(cmd) => cmd.run(),
             ModifySubcommand::Flip(cmd) => cmd.run(),
             ModifySubcommand::Grayscale(cmd) => cmd.run(),
