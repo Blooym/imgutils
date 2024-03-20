@@ -50,7 +50,7 @@ Options:
 * [x] Grayscale
 * [x] Invert
 * [x] Hue
-* [x] Reformat
+* [x] Format
 * [x] Resize
 * [x] Rotate
 * [x] Get Image Dimensions
