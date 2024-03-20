@@ -7,7 +7,6 @@ use clap::Parser;
 use image::io::Reader;
 use image::{GenericImageView, ImageFormat};
 use owo_colors::{OwoColorize, Stream};
-use std::os::unix::fs::MetadataExt;
 use std::path::PathBuf;
 
 /// Print detailed information about an image in a pretty format.
@@ -27,7 +26,7 @@ impl ExecutableCommand for DetailsCommand {
             bail!(INPUT_IS_NOT_FILE);
         }
 
-        let file_size = self.input_path.metadata()?.size();
+        let file_size = self.input_path.metadata()?.len();
         let image_format = ImageFormat::from_path(&self.input_path)?;
         let image = Reader::open(&self.input_path)?
             .decode()
