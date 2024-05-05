@@ -19,8 +19,8 @@ fn styles() -> Styles {
     Styles::styled()
         .header(AnsiColor::BrightMagenta.on_default() | Effects::BOLD)
         .usage(AnsiColor::BrightMagenta.on_default() | Effects::BOLD)
-        .literal(AnsiColor::White.on_default())
-        .placeholder(AnsiColor::White.on_default())
+        .literal(AnsiColor::Green.on_default() | Effects::BOLD)
+        .placeholder(AnsiColor::Green.on_default() | Effects::BOLD)
 }
 
 /// Command-line utility for quickly getting information about and manipulating images.
