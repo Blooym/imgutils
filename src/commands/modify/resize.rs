@@ -5,8 +5,7 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::{Parser, ValueEnum};
-use image::ImageReader;
-use image::{imageops::FilterType, ImageFormat};
+use image::{imageops::FilterType, ImageFormat, ImageReader};
 use std::path::PathBuf;
 
 /// Resize an image, optionally specifying maintaining aspect ratio.

@@ -5,8 +5,7 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
-use image::ImageFormat;
-use image::ImageReader;
+use image::{ImageFormat, ImageReader};
 use std::path::PathBuf;
 
 /// Change an image's file format.
