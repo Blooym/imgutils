@@ -4,8 +4,7 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
-use image::io::Reader;
-use image::GenericImageView;
+use image::{GenericImageView, ImageReader};
 use std::path::PathBuf;
 
 /// Print an image's dimensions formatted as 'WidthxHeight'.
@@ -25,7 +24,7 @@ impl ExecutableCommand for DimensionsCommand {
             bail!(INPUT_IS_NOT_FILE);
         }
 
-        let dimensions = Reader::open(&self.input_path)?
+        let dimensions = ImageReader::open(&self.input_path)?
             .decode()
             .context(ERROR_IMGDECODE_CTX)?
             .dimensions(); // Width = 0, Height = 1

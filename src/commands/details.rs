@@ -4,8 +4,7 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
-use image::io::Reader;
-use image::{GenericImageView, ImageFormat};
+use image::{GenericImageView, ImageFormat, ImageReader};
 use owo_colors::{OwoColorize, Stream};
 use std::path::PathBuf;
 
@@ -28,7 +27,7 @@ impl ExecutableCommand for DetailsCommand {
 
         let file_size = self.input_path.metadata()?.len();
         let image_format = ImageFormat::from_path(&self.input_path)?;
-        let image = Reader::open(&self.input_path)?
+        let image = ImageReader::open(&self.input_path)?
             .decode()
             .context(ERROR_IMGDECODE_CTX)?;
         let dimensions = image.dimensions();

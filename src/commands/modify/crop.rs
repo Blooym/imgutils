@@ -5,7 +5,8 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
-use image::{io::Reader, ImageFormat};
+use image::ImageFormat;
+use image::ImageReader;
 use std::path::PathBuf;
 
 /// Return a cut-out of an image delimited by a bounding rectangle.
@@ -52,7 +53,7 @@ impl ExecutableCommand for CropCommand {
 
         let output_format =
             ImageFormat::from_path(&self.output_path).context(ERROR_IMGTYPEPARSE_CTX)?;
-        Reader::open(&self.input_path)?
+        ImageReader::open(&self.input_path)?
             .decode()
             .context(ERROR_IMGDECODE_CTX)?
             .crop_imm(self.x, self.y, self.width, self.height)

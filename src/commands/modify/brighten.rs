@@ -5,7 +5,8 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
-use image::{io::Reader, ImageFormat};
+use image::ImageFormat;
+use image::ImageReader;
 use std::path::PathBuf;
 
 /// Brighten the pixels of an image.
@@ -45,7 +46,7 @@ impl ExecutableCommand for BrightenCommand {
 
         let output_format =
             ImageFormat::from_path(&self.output_path).context(ERROR_IMGTYPEPARSE_CTX)?;
-        Reader::open(self.input_path)?
+        ImageReader::open(self.input_path)?
             .decode()
             .context(ERROR_IMGDECODE_CTX)?
             .brighten(self.amount)

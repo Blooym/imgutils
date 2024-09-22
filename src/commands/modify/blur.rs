@@ -5,7 +5,8 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
-use image::{io::Reader, ImageFormat};
+use image::ImageFormat;
+use image::ImageReader;
 use std::path::PathBuf;
 
 /// Apply a Gaussian blur to an image.
@@ -44,7 +45,7 @@ impl ExecutableCommand for BlurCommand {
 
         let output_format =
             ImageFormat::from_path(&self.output_path).context(ERROR_IMGTYPEPARSE_CTX)?;
-        Reader::open(self.input_path)?
+        ImageReader::open(self.input_path)?
             .decode()
             .context(ERROR_IMGDECODE_CTX)?
             .blur(self.sigma_strength)

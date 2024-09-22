@@ -5,7 +5,8 @@ use crate::commands::messages::{
 use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::{Parser, ValueEnum};
-use image::{io::Reader, ImageFormat};
+use image::ImageFormat;
+use image::ImageReader;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, ValueEnum)]
@@ -50,7 +51,7 @@ impl ExecutableCommand for FlipCommand {
 
         let output_format =
             ImageFormat::from_path(&self.output_path).context(ERROR_IMGTYPEPARSE_CTX)?;
-        let mut image = Reader::open(self.input_path)
+        let mut image = ImageReader::open(self.input_path)
             .context(ERROR_IMGREAD_CTX)?
             .decode()
             .context(ERROR_IMGDECODE_CTX)?
