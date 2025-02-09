@@ -7,25 +7,11 @@ use self::dimensions::DimensionsCommand;
 use self::modify::ModifyCommandBase;
 
 use anyhow::Result;
-use clap::{
-    builder::{
-        styling::{AnsiColor, Effects},
-        Styles,
-    },
-    Parser,
-};
-
-fn styles() -> Styles {
-    Styles::styled()
-        .header(AnsiColor::BrightMagenta.on_default() | Effects::BOLD)
-        .usage(AnsiColor::BrightMagenta.on_default() | Effects::BOLD)
-        .literal(AnsiColor::Green.on_default() | Effects::BOLD)
-        .placeholder(AnsiColor::Green.on_default() | Effects::BOLD)
-}
+use clap::Parser;
 
 /// Command-line utility for quickly getting information about and manipulating images.
 #[derive(Debug, Parser)]
-#[command(author, version, about, long_about, styles = styles())]
+#[command(author, version, about, long_about)]
 pub struct ProcessCommandRoot {
     #[clap(subcommand)]
     pub cmd: Commands,

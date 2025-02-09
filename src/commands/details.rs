@@ -5,7 +5,6 @@ use crate::commands::ExecutableCommand;
 use anyhow::{bail, Context, Result};
 use clap::Parser;
 use image::{GenericImageView, ImageFormat, ImageReader};
-use owo_colors::{OwoColorize, Stream};
 use std::path::PathBuf;
 
 /// Print detailed information about an image in a pretty format.
@@ -38,9 +37,7 @@ impl ExecutableCommand for DetailsCommand {
                 .file_name()
                 .context("failed to obtain filename")?
                 .to_str()
-                .context("failed to converto regular string")?
-                .if_supports_color(Stream::Stdout, |text| text.cyan())
-                .if_supports_color(Stream::Stdout, |text| text.bold())
+                .context("failed to convert to regular string")?
         );
         println!("  * Format: {:?}", image_format);
         println!("  * Size (bytes): {:?}", file_size);
