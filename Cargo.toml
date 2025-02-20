@@ -7,8 +7,8 @@ categories = ["command-line-utilities", "multimedia::images"]
 license = "MIT OR Apache-2.0"
 keywords = ["image", "cli"]
 repository = "https://github.com/Blooym/imgutils"
-rust-version = "1.79"
-edition = "2021"
+rust-version = "1.85"
+edition = "2024"
 
 [[bin]]
 name = "imgutils"
@@ -23,8 +23,8 @@ inherits = "release"
 lto = "thin"
 
 [dependencies]
-anyhow = { version = "1.0.95", features = ["backtrace"] }
-clap = { version = "4.5.28", features = ["derive"] }
+anyhow = { version = "1.0.96", features = ["backtrace"] }
+clap = { version = "4.5.30", features = ["derive"] }
 image = "0.25.5"
 indicatif = "0.17.11"
 
