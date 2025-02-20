@@ -1,8 +1,8 @@
+use crate::commands::ExecutableCommand;
 use crate::commands::messages::{
     ERROR_IMGDECODE_CTX, INPUT_FILE_DOES_NOT_EXIST, INPUT_IS_NOT_FILE,
 };
-use crate::commands::ExecutableCommand;
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use clap::Parser;
 use image::{GenericImageView, ImageReader};
 use std::path::PathBuf;
